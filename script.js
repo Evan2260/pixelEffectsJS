@@ -48,16 +48,15 @@ image1.addEventListener('load', function(){
   console.log(scannedImage);
 
   const scannedData = scannedImage.data;
-  for (let i = 0, i < scannedData.length; i += 4){
+  for (let i = 0; i < scannedData.length; i += 4){
     const total = scannedData[i] + scannedData[i+1] + scannedData[i+2];
     const averageColorValue = total/3;
     scannedData[i] = averageColorValue;
     scannedData[i+1] = averageColorValue;
     scannedData[i+2] = averageColorValue;
-
   }
   scannedImage.data = scannedData;
-  ctx.putImageData(scannedImage, 0, 0)
+  ctx.putImageData(scannedImage, 0, 0);
 });
 
 // This will scan all the pixels on canvas from left to right and top to bottom.
@@ -65,7 +64,8 @@ image1.addEventListener('load', function(){
 // We also had to use a tool at: https://onlinepngtools.com/convert-png-to-base64 in order to convert it to the corret URL in order for the getImageData built-in method to work and find all of our colors.
 
 // Let's now save this massive pixel array so we can manipulate it later on. To do that we will create a variable called scannedData. scannedData is the UintBCLampedArray you see in the Chrome Console.
-// After that, we will create a for loop that will loop through the massive data array. Notice how we do not increment (i++), but use += 4. We chose 4 because it will increment by each pixel one by one this way.
+
+// After that, we will create a for loop that will loop through the massive data array. Notice how we do not increment (i++), but use += 4. We chose 4 because it will increment by each pixel one by one this way. (Line 52)
 
 // Now within the for loop, we will convert all of these rgb color numbers into colors that are on the gray scale (black, white, and shades of gray).
 
@@ -73,6 +73,20 @@ image1.addEventListener('load', function(){
 // scannedData[i] will represent our red pixel.
 // scannedData[i+1] will be green.
 // scannedData[i+2] will be blue.
-//averageColorValue is the total sum divided by the 3 colors.
+// averageColorValue is the total sum divided by the 3 colors. (Line 53)
+// *If you add a + or - after averageColorValue with an integer, it will change the overall color of the image.
 
-// Now that we have the average, we have to apply it to all of the colors.
+// Now that we have the average, we have to assign it to all of the colors to get the grey scale. We do this by assigning all of the scannedData[i]'s to averageColorValue
+
+// Now we take the scannedImage variable and use it to override the massive data array.
+
+
+
+
+
+
+
+
+
+
+//
